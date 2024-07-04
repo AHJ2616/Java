@@ -7,11 +7,18 @@ public class PriorityExam {
 			
 		for(int i=1;i<=10;i++) {
 		Thread th = new CalcThread("Thread "+i); //객체가 생성되면서 이름이 만들어 진다.
+		
 		if(i!=10) {th.setPriority(Thread.MIN_PRIORITY);}
-		else if(i==10) {th.setPriority(8);}//1-10까지 정수값을 입력해도 된다.
+		
+		else if(i==10) {th.setPriority(th.MAX_PRIORITY);}//1-10까지 정수값을 입력해도 된다.
 			
 		th.start();
+		
+		//th.sample
+		
 		}//for end
+		
+		
 		
 
 	}//main method end
