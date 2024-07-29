@@ -1,0 +1,18 @@
+<%@page import="model1.board.BoardDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@ include file=",/isLoggedIn.jsp %> %>
+<%
+	BoardDTO dto = new BoardDTO();
+	dto.setB_num(request.getParameter("num"));
+%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>수정 페이지</title>
+</head>
+<body>
+
+</body>
+</html>

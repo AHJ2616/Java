@@ -1,0 +1,12 @@
+package common;
+
+public class Login {
+	public void login(Person person) {
+		
+		
+	}
+	
+	
+	
+	
+}//class end

@@ -1,0 +1,9 @@
+package membership;
+
+import common.JDBConnect;
+
+public class Memberdao extends JDBConnect { //jdbc 처리 용도
+	
+	
+	
+}//class end

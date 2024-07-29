@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CookieMain.jsp : 쿠키 생성</title>
+</head>
+<body>
+<h2>1. 쿠키 생성</h2>
+<%
+Cookie cookie1 = new Cookie("cookie2","초코칩쿠키");
+%>
+
+</body>
+</html>

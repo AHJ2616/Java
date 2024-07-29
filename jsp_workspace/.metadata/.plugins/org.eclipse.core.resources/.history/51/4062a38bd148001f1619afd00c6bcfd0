@@ -1,0 +1,15 @@
+package common;
+
+public class Login {
+	public void login(Person person) {
+		for(int i =0; i<person.persons.size();i++) {
+			if(person.getId().equals(person.persons.get(i).getId())&&person.getPw().equals(person.persons.get(i).getPw())) {}
+			
+		}
+		
+	}
+	
+	
+	
+	
+}//class end

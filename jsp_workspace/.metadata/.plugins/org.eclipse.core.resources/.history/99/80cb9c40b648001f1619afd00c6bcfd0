@@ -1,0 +1,18 @@
+<%@page import="common.Person"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <% 
+    pageContext.setAttribute("pageInt", 8282);  //page영역에 값 저장(int)
+    pageContext.setAttribute("pageString", "MBC");
+    pageContext.setAttribute("PersonDTO", new Person("네임",40));
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PageContextMain : 자바dto를 활용</title>
+</head>
+<body>
+
+</body>
+</html>

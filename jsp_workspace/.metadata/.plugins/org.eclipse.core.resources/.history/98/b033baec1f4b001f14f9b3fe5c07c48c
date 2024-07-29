@@ -1,0 +1,15 @@
+package model1.member;
+
+import java.util.List;
+
+import common.DBconnectionPool;
+
+public class MemeberDAO extends DBconnectionPool {
+
+	public void register(List list_MemberDTO) {
+		
+		
+		
+	}
+	
+}//class end

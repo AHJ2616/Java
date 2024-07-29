@@ -1,0 +1,18 @@
+<%@page import="common.Person"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%
+    request.setAttribute("reqString","안희준");
+    request.setAttribute("reqPerson", new Person("조용재",35));
+    
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RequestMain.jsp : Request영역은 요청,처리 페이지에서 값이 유지된다. </title>
+</head>
+<body>
+
+</body>
+</html>

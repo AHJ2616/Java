@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인 : 메인메뉴</title>
+</head>
+<body>
+<h2>환영합니다</h2>
+
+<div id="main_menu">
+원하시는 메뉴를 선택해주세요<br>
+회원메뉴
+<a href="register_member.jsp">회원가입</a><br>
+<a href="modify_member.jsp">회원정보수정</a><br>
+<a href="login_member.jsp">로그인</a><br><br>
+
+게시판메뉴
+<a href="write_board.jsp">글쓰기</a><br>
+<a href="edit_board.jsp">글수정</a><br>
+</div>
+
+
+</body>
+</html>

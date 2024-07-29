@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>tml>
+<!-- 페이지 위에있는 메뉴 바 -->
+<!-- include용 파일은 기본 태그가 필요 없다 -->
+
+<table border= "1" width= "90%" > <!-- 두께 1 , 가로크기 90% -->
+  <tr>
+    <td align="center" >
+    	<%
+    	if(session.getAttribute("id")==null){// session에 id가 없으면(로그인 안한 상태면) 로그인 표시
+    		
+    	}else{}//로그인상태면 로그아웃 표시
+    	%>
+    </td>
+    <!-- 로그인상태를 보고 로그인 | 로그아웃 표시 -->
+  </tr>
+</table>

@@ -1,0 +1,13 @@
+package model1.member;
+
+import java.util.List;
+
+public class MemeberDAO {
+
+	public void register(List list_MemberDTO) {
+		
+		
+		
+	}
+	
+}//class end

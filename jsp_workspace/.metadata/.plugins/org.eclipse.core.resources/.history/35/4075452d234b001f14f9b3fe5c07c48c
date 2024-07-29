@@ -1,0 +1,29 @@
+package model1.member;
+
+
+import java.sql.SQLException;
+
+import common.DBconnectionPool;
+
+public class MemberDAO extends DBconnectionPool {
+	
+	public MemberDAO() {}
+
+	public int register(MemberDTO memberDTO) {
+		int result = 0;
+		String query = "insert into member (id,pw,name) values(?,?,?)";
+		try {
+			pst = con.prepareStatement(query);
+			pst.setString(1,memberDTO.getId());
+			pst.setString(2,memberDTO.getPw());
+			pst.setString(3,memberDTO.getName());
+			result = pst.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}//method end
+	
+}//class end

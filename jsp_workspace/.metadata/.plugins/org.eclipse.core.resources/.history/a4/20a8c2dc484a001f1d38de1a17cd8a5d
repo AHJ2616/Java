@@ -1,0 +1,13 @@
+package membership;
+
+import common.JDBConnect;
+
+public class Memberdao extends JDBConnect { //jdbc 처리 용도
+	//JDBConnect를 상속받아서 기본생성자를 만들 필요가 없다.
+	
+	public Memberdao() {//2번째 방법 테스트
+		
+		
+	}
+	
+}//class end

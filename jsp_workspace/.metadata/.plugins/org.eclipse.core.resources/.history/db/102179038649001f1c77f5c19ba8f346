@@ -1,0 +1,24 @@
+package common;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class JDBConnect {
+
+	public Connection connection;
+	public Statement st;
+	public PreparedStatement pst;
+	public ResultSet rs;
+	
+	public JDBConnect() {
+		
+		
+	}
+	
+	
+	
+}//class end
+
+

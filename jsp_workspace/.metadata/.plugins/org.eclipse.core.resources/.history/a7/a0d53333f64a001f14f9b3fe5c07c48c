@@ -1,0 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>tml>
+<!-- 페이지 위에있는 메뉴 바 -->
+<!-- include용 파일은 기본 태그가 필요 없다 -->

@@ -1,0 +1,12 @@
+<%@page import="model1.board.BoardDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="./isLoggedIn.jsp" %>
+<%
+String b_title = request.getParameter("title");
+String b_contents = request.getParameter("content");
+BoardDTO boardDTO = new BoardDTO();
+boardDTO.setB_contents(b_contents);
+boardDTO.setB_title(b_title);
+boardDTO.setB_id(session.getAttribute("id").toString());
+%>

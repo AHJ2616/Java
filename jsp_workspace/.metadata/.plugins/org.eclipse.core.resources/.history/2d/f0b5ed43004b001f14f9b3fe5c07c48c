@@ -1,0 +1,14 @@
+package model1.board;
+
+import java.sql.Date;
+
+public class BoardDTO {
+	private int num;
+	private String title;
+	private String content;
+	private String id;
+	private Date postdate;
+	private int visitcount;
+	private String writer;
+	
+}//class end

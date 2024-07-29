@@ -1,0 +1,9 @@
+create table member(
+id nvarchar2(10) constraint id_pk primary key,
+pw nvarchar2(20) constraint pw_nn not null,
+name nvarchar2(30) constraint name_nn not null,
+regidate date default sysdate constraint regidate_nn not null
+);
+
+
+

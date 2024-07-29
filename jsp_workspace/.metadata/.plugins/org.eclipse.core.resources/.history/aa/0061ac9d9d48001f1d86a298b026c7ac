@@ -1,0 +1,20 @@
+<%@page import="java.sql.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	// 응답헤더에 날짜 처리용 코드
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	long add_date = simpleDateFormat.parse(request.getParameter("add_date")).getTime();
+	Date date = new Date(add_date);
+	System.out.println(date);
+	
+	response.addDateHeader("resp_date", add_date);
+%>    
+    
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>ResponseHeader.jsp : get으로 받은 날짜,숫자,문자처리</title></head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+String popupCookie = "on"; //쿠키 제어용
+Cookie[] cookies = request.getCookies(); // 모든 쿠키값 불러오기
+if(cookies!=null){
+	for(Cookie c : cookies){
+	String cookieName= c.getName()
+	}
+}
+%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PopUpMain_v0.1.jsp : 팝업 만들기</title>
+</head>
+<body>
+<!-- html(웹의 문서), css3(스타일), javascript(기능구현) -->
+
+<style>
+div#popUp{
+position: absolute; top: 100px;/* 위에서 100픽셀 내려와라 */
+left: 60px; color: black; width: 270px; height: 100px; background-color: gray;
+}
+div#popUp>div{
+position: relative; background-color: #ffffff; border: 2px solid gray; padding: 10px; color : black;
+}
+</style><!-- CSS3를 적용하는 블럭 : 색,크기,도형 -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- 외부에서 제공하는 jQuery라이브러리 CDN -->
+<!-- jQuery : java script를 개선한 코드 -->
+
+<script>
+$(function() { //jQuery의 기본 프레임
+	$('#closeButton').click(function() { //id가 closeButton인 객체를 클릭했을때 동작
+		$('#popUp').hide(); //div popUp을 숨긴다.
+	})
+	
+	
+}); //jQuery 코드 입력
+
+</script> <!-- 자바스크립트 적용하는 블럭 -->
+
+<h2>팝업 메인 페이지</h2>
+
+<%
+out.print("현재 팝업창은"+popupCookie+"상태 입니다");
+if(popupCookie.equals("on")){
+%>
+
+<div id="popUp">
+<!-- name대신 id를 사용할 수 있다. id는 해당페이지에서 unique값이다. -->
+<!-- class로도 지정가능하다. .Clss명으로 호출 가능하다. -->
+<!-- #id명으로 호출 가능하다. -->
+
+	<h2 align="center">공지사항</h2><!-- 가운데 정렬 -->
+	<p align="center">공지사항을 잘 읽어 주세요</p>
+	<div align="right"><!-- 오른쪽 정령 -->
+	<form name="popFrame">
+	하루동안 열지 않음<input type="checkbox" id="inactiveToday" value="1" /> 
+	<input type="button" id= "closeButton" value="닫기" />
+	</form>
+	
+	</div>
+</div>
+
+<% }/* if코드 종료 */ %>
+</body>
+</html>

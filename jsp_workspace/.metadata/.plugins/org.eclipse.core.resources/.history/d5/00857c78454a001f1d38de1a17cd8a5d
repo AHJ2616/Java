@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login_form.jsp : 로그인 창</title>
+<!-- 성공시 세션에 저장 -->
+</head>
+<body>
+	<h2>로그인 페이지</h2>
+	<span style="color: red; font-size: 1.2em;">
+	<%= request.getAttribute("LoginErrMsg")==null ? "" : request.getAttribute("LoginErrMsg") %>
+	<!-- 조건 ; request 영역에 "loginErrMsg"가 있나 확인 ?true일때 : false일때 -->
+	</span><!-- 한줄짜리 글자창 출력 -->
+<%
+if(session.getAttribute("id")==null){//로그인 상태
+	//로그아웃 상태
+%>
+
+<script>
+function validateForm(form){
+	if(!form.user_id.value){
+		alert("아이디를 입력하세요.")
+		return false;
+	}
+	if(form.user_pw.value==""){
+		alert("패스워드를 입력하세요.");
+		return false;
+	}
+}
+</script>
+
+<div id="login_menu">
+	<form action= "login_process.jsp" method= "post" name= "login_form" onsubmit="return validateForm(this);">
+		아이디 : <input type="text" name="id" /><br>
+		패스워드 : <input type="password" name="pw" /><br>
+		<input type="submit" value="로그인하기"	/>
+	</form>	
+</div>
+<%
+} else{
+%>
+	<%=session.getAttribute("name") %> 회원님, 로그인하셨습니다.
+	<a href="logout.jsp">[로그아웃]</a>
+<%}%>	
+
+</body>
+</html>

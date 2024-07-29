@@ -1,0 +1,16 @@
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.List"%>
+<%@page import="model1.member.MemberDAO"%>
+<%@page import="model1.member.MemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+MemberDTO memberDTO = new MemberDTO();
+MemberDAO memberDAO = new MemberDAO();
+memberDTO.setId(request.getAttribute("id").toString());
+memberDTO.setPw(request.getAttribute("pw").toString());
+memberDTO.setName(request.getAttribute("name").toString());
+List<MemberDTO> list_MemberDTO = new LinkedList<MemberDTO>();
+int result = memberDAO.register(list_MemberDTO);
+%>

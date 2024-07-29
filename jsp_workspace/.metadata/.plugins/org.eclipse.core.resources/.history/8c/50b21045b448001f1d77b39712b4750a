@@ -1,0 +1,7 @@
+package common;
+
+public class Person {
+	// JavaBeans 규약
+	
+	
+}//class end

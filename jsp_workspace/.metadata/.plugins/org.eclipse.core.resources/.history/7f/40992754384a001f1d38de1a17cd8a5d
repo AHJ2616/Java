@@ -1,0 +1,18 @@
+<%@page import="common.DBconnectionPool"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+ <%
+ DBconnectionPool pool = new DBconnectionPool();
+ String query ="insert into member(id,pw,name)values(?,?,?)";
+ pool.pstmt = pool.con.prepareStatement(query);
+ pool.pstmt.setString(1, request.getParameter("member_id"))
+ %>
+</body>
+</html>

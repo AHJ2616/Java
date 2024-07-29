@@ -1,0 +1,21 @@
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SessionMain : 세션 영역 value 유지</title>
+</head>
+<body>
+<% 
+ArrayList<String> list = new ArrayList();
+list.add("엠비씨");
+list.add("아카데미");
+list.add("컴퓨터");
+list.add("교육센터");
+
+session.setAttribute("lists", list);
+%>
+</body>
+</html>

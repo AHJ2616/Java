@@ -1,0 +1,11 @@
+package common;
+
+public class JDBConnect {
+
+}
+
+
+public JDBConnect() {
+	
+	
+}

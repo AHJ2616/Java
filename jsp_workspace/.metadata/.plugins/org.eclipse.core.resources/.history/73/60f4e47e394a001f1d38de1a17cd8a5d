@@ -1,0 +1,17 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>session_main.jsp : web.xml 에서 설정한 session정보 확인</title>
+</head>
+<body>
+	<h2>Session 설정 확인</h2>
+	<%
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		long creating_time = session.getCreationTime();
+	%>
+</body>
+</html>

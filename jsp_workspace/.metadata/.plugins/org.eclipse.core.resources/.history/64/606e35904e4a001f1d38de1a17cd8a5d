@@ -1,0 +1,32 @@
+<%@page import="membership.Memberdto"%>
+<%@page import="membership.Memberdao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login_process.jsp : login_form의 포워드 페이지</title>
+</head>
+<body>
+<%
+String id1 = request.getParameter("id");
+String pw1 = request.getParameter("pw");
+String driver = application.getInitParameter("OracleDriver");
+String url = application.getInitParameter("OracleUrl");
+String id = application.getInitParameter("OracleId");
+String pw = application.getInitParameter("OraclePw");
+Memberdao memberdao = new Memberdao(driver,url,id,pw);
+Memberdto memberdto = memberdao.getMemberdto(id1, pw1);
+memberdao.close();
+/* 로그인 성공시 session에 넣고 실패하면 돌아가기 */
+if(memberdto.getId() !=null){
+session.setAttribute("id",memberdto.getId());
+session.setAttribute("pw",memberdto.getPw());
+session.setAttribute("name",memberdto.getName());
+session.setAttribute("regidate",memberdto.getRegdate());
+
+}
+%>
+</body>
+</html>

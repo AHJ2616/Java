@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<% 
+Cookie popUpClose = new Cookie("popUpClose","off");
+popUpClose.setPath(request.getContextPath()); //쿠기가 생성된 경로
+popUpClose.setMaxAge(3_600*24);
+response.addCookie(popUpClose);
+
+%>
+
+</body>
+</html>

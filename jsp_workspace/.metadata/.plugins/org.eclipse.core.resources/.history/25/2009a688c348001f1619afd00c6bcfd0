@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ApplicationMain : 톰캣이 갖고 있는 영역</title>
+<!-- 톰캣 종료시 사라진다. -->
+</head>
+<body>
+
+</body>
+</html>

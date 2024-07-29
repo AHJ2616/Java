@@ -1,0 +1,12 @@
+package common;
+
+public class Login {
+	public void login(String id,String pw) {
+		Person person = new Person();
+		
+	}
+	
+	
+	
+	
+}//class end

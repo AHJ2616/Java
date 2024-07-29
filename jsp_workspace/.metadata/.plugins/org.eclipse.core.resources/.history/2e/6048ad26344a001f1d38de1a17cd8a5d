@@ -1,0 +1,14 @@
+package exam;
+
+import java.sql.Date;
+
+public class BoardDTO {
+
+	private int b_num;
+	private String b_title;
+	private String b_contents;
+	private String b_id;
+	private Date b_postdate;
+	private int b_count;
+	
+}//class end

@@ -1,0 +1,11 @@
+package common;
+
+
+public class Person {
+	// JavaBeans 규약
+	
+	private String id;
+	private String pw;
+	private String nick;
+	
+}//class end

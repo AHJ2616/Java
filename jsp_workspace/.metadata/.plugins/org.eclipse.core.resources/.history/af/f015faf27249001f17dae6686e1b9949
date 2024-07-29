@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
+    String user_id = request.getParameter("user_id");
+    String user_pw = request.getParameter("user_pw");
+    String save_check = request.getParameter("save+check");
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>id_save.jsp : 로그인 처리 (성공,실패 결과를 cookie 와 alert 으로 보여준다)</title>
+</head>
+<body>
+
+</body>
+</html>
