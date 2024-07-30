@@ -11,7 +11,12 @@ boardDTO.setB_contents(b_contents);
 boardDTO.setB_title(b_title);
 boardDTO.setB_id(session.getAttribute("id").toString());
 BoardDAO boardDAO = new BoardDAO();
-int result = boardDAO.write_board(boardDTO);
+int result = boardDAO.write_board(boardDTO); 
+/* int result = 0;
+for(int i=1;i<101;i++){
+	boardDTO.setB_title(b_title+"-"+i);
+	result = boardDAO.write_board(boardDTO);
+} */
 boardDAO.close();
 if(result==1){
 	response.sendRedirect("List.jsp");

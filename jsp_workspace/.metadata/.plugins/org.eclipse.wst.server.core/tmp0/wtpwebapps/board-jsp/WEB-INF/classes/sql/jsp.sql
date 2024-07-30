@@ -31,3 +31,6 @@ select * from BOARD;
 select count(*) from board;
 
 update board set b_count = b_count+1 where b_num=1;
+
+
+select * from (select T.*, rownum rNum from (select * from board order by b_num desc) T ) where rNum between A and B; --rownum A와B 사이의 값을 가져온다

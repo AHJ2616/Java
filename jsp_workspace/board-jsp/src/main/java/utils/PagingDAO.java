@@ -1,0 +1,47 @@
+package utils;
+
+public class PagingDAO {//Paging 처리위한 블럭
+	
+	public static String paging_String(int total_count,int posts,int pages,int page_num,String req_url) {
+		String paging= "";
+		
+		// 단계 3 : 전체 페이지 수 계산
+        int totalPages = (int) (Math.ceil(((double) total_count / posts)));
+
+        // 단계 4 : '이전 페이지 블록 바로가기' 출력
+		int pageTemp = (((page_num - 1) / pages) * pages) + 1;
+        if (pageTemp != 1) {
+            paging += "<a href='" + req_url + "?page_num=1'>[첫 페이지]</a>";
+            paging += "&nbsp;";
+            paging += "<a href='" + req_url + "?page_num=" + (pageTemp - 1)
+                         + "'>[이전 블록]</a>";
+        }
+
+        // 단계 5 : 각 페이지 번호 출력
+        int blockCount = 1;
+        while (blockCount <= pages && pageTemp <= totalPages) {
+            if (pageTemp == page_num) {
+                // 현재 페이지는 링크를 걸지 않음
+                paging += "&nbsp;" + pageTemp + "&nbsp;";
+            } else {
+                paging += "&nbsp;<a href='" + req_url + "?page_num=" + pageTemp
+                             + "'>" + pageTemp + "</a>&nbsp;";
+            }
+            pageTemp++;
+            blockCount++;
+        }
+
+        // 단계 6 : '다음 페이지 블록 바로가기' 출력
+        if (pageTemp <= totalPages) {
+            paging += "<a href='" + req_url + "?page_num=" + pageTemp
+                         + "'>[다음 블록]</a>";
+            paging += "&nbsp;";
+            paging += "<a href='" + req_url + "?page_num=" + totalPages
+                         + "'>[마지막 페이지]</a>";
+        }
+
+		return paging;
+	}//method end
+
+	
+}//class end

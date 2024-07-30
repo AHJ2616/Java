@@ -1,0 +1,13 @@
+package utils;
+
+public class Paging {//Paging 처리위한 블럭
+	
+	public static String paging_String(int total_count,int posts,int pages,int page_num,String reg_url) {
+		String paging= "";
+		
+		
+		return paging;
+	}//method end
+
+	
+}//class end

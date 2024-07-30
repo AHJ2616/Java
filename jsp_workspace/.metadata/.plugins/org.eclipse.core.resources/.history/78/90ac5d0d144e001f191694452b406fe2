@@ -1,0 +1,168 @@
+package model1.board;
+
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import common.DBconnectionPool;
+
+public class BoardDAO extends DBconnectionPool{
+	public BoardDAO(){} //기본생성자
+	
+	//게시물 번호 작성하기(게시물 번호 읽기)
+	public int take_count(Map<String,Object> map) { //Object : 최상위 타입(모든타입 다 받을때)
+		int total_count=0;
+		String query = "select count(*) from board ";
+		if(map.get("search_word")!=null ) {
+			query += " where " + map.get("search_field") +" like '%" + map.get("search_word")
+			+"%'"; 
+			//map의 키값 : search_field는 검색범위(제목or컨텐츠or작성자) search_word는 검색내용
+		} 
+		try {
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			if(rs.next()) {
+			total_count = rs.getInt(1); 
+			}
+			rs.close();
+			st.close();
+			//select count(*) 을하면 레코드(record)의 갯수를 int로 rs에 넣어준다. getInt(1)로 얻을 수 있다
+		} catch (SQLException e) {
+			System.out.println("BoardDAO.take_count 오류발생");
+			e.printStackTrace();
+		}
+		
+		return total_count;
+	}
+	
+	
+	//게시물 리스트 출력
+	public List<BoardDTO> show_list(Map<String,Object> map) {
+		List<BoardDTO> list_BoardDTO = new LinkedList<BoardDTO>();
+		
+		String query = "select * from (select T.*, rownum rNum from (select * from board ";
+		if(map.get("search_word")!=null ) {
+			
+			query += " where " + map.get("search_field") +" like '%" + map.get("search_word")
+			+"%'";}//검색 쿼리 추가
+		
+			query += " order by b_num desc) T ) where rNum between A and B;"; //정렬기준 추가
+		
+			try {
+				st = con.createStatement();
+				rs= st.executeQuery(query);
+				while(rs.next()) {
+					BoardDTO boardDTO = new BoardDTO();
+					boardDTO.setB_num(rs.getString("b_num")); //db에 number도 String타입으로 자동 치환된다.
+					boardDTO.setB_title(rs.getString("b_title"));
+					boardDTO.setB_contents(rs.getString("b_contents"));
+					boardDTO.setB_id(rs.getString("b_id"));
+					boardDTO.setB_postdate(rs.getDate("b_postdate"));
+					boardDTO.setB_count(rs.getInt("b_count"));
+					list_BoardDTO.add(boardDTO);
+				}//while end
+			} catch (SQLException e) {
+				System.out.println("BoardDAO.show_list 오류발생");
+				e.printStackTrace();
+			}
+		return list_BoardDTO;
+	}
+	
+	//게시물 등록
+	public int write_board(BoardDTO boardDTO) {
+		String query = "insert into board(b_num,b_title,b_contents,b_id) values(b_num_seq.nextval,?,?,?)";
+		int result=0;
+		try {
+			pst = con.prepareStatement(query);
+			pst.setString(1, boardDTO.getB_title());
+			pst.setString(2, boardDTO.getB_contents());
+			pst.setString(3,boardDTO.getB_id());
+			rs=pst.executeQuery();
+			result =1;
+		} catch (SQLException e) {
+			System.out.println("BoardDAO.write_board 오류발생");
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	
+	public BoardDTO view_page(String num) {//제목을 클릭했을때 글 상세보기
+		BoardDTO boardDTO = new BoardDTO();
+		String query = "select B.*, M.name from member M inner join board B on M.id=B.b_id where b_num=?";
+		//작성자에 b_id가 아닌 member의 name을 넣고 싶어서 board 전체(*)를 가져올때 member.name도 같이 가져온다
+		
+		try {
+			pst = con.prepareStatement(query);
+			pst.setString(1,num);
+			rs = pst.executeQuery();
+			if(rs.next()) {
+				boardDTO.setB_num(rs.getString("b_num"));
+				boardDTO.setB_title(rs.getString("b_title"));
+				boardDTO.setB_contents(rs.getString("b_contents"));
+				boardDTO.setB_id(rs.getString("b_id"));
+				boardDTO.setB_postdate(rs.getDate("b_postdate"));
+				boardDTO.setB_count(rs.getInt("b_count"));
+				boardDTO.setName(rs.getString("name"));
+				System.out.println(boardDTO.toString());
+			} else {System.out.println("BoardDAO.view_page 오류");}
+		} catch (SQLException e) {
+			System.out.println("BoardDAO.view_page 오류");
+			e.printStackTrace();
+		}
+		
+		return boardDTO;
+		
+		
+	}//method end
+	
+	public void increase_b_count(String num) {//제목 클릭시 조회수 증가용 코드
+		String query = "update board set b_count = b_count+1 where b_num=?";
+		try {
+			pst = con.prepareStatement(query);
+			pst.setString(1,num);
+			pst.execute();
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+	}
+	
+	public int edit_board(BoardDTO dto) {//게시물 수정
+		int result=0;
+		String query= "update board set b_title=?,b_contents=? where b_num=? ";
+		try {
+			pst = con.prepareStatement(query);
+			pst.setString(1,dto.getB_title());
+			pst.setString(2,dto.getB_contents());
+			pst.setString(3,dto.getB_num());
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("BoardDAO.edit_board 오류");
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}//method end
+	
+	public int delete_board(String num) {//게시물 삭제
+		int result=0;
+		String query = "delete from board where b_num=?";
+		try {
+			pst = con.prepareStatement(query);
+			pst.setString(1,num);
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("BoardDAO.delete_board 오류");
+			e.printStackTrace();
+		}
+				
+		
+		
+		return result;
+	}//method end
+	
+}//class end

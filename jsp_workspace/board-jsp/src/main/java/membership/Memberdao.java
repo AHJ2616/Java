@@ -11,7 +11,7 @@ public class Memberdao extends DBconnectionPool { //jdbc 처리 용도
 	//사용자 지정 생성자
 	public Memberdao() {}
 	
-	public Memberdto getMemberdto(String id,String pw) {
+	public Memberdto getMemberdto(String id,String pw) {//로그인
 		Memberdto memberdto = new Memberdto();
 		try {
 		String query = "select * from member where id=? and pw=?";

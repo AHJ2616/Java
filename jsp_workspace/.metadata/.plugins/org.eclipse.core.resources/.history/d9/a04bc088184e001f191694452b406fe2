@@ -1,0 +1,7 @@
+package utils;
+
+public class Paging {//Paging 처리위한 DTO
+	
+
+	
+}//class end

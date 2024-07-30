@@ -40,16 +40,21 @@ public class BoardDAO extends DBconnectionPool{
 	//게시물 리스트 출력
 	public List<BoardDTO> show_list(Map<String,Object> map) {
 		List<BoardDTO> list_BoardDTO = new LinkedList<BoardDTO>();
+		  //map 의 저장된 값 =  search_field, search_word, start, end
 		
-		String query = "select * from board";
+		String query = "select * from (select T.*, rownum rNum from (select * from board ";
 		if(map.get("search_word")!=null ) {
+			
 			query += " where " + map.get("search_field") +" like '%" + map.get("search_word")
-			+"%'";}
-			query += " order by b_num desc"; //정렬기준 추가
+			+"%'";}//검색 쿼리 추가
+		
+			query += " order by b_num desc) T ) where rNum between ? and ?"; //정렬기준 추가
 		
 			try {
-				st = con.createStatement();
-				rs= st.executeQuery(query);
+				pst = con.prepareStatement(query);
+				pst.setString(1,map.get("start").toString());
+				pst.setString(2,map.get("end").toString());
+				rs= pst.executeQuery();
 				while(rs.next()) {
 					BoardDTO boardDTO = new BoardDTO();
 					boardDTO.setB_num(rs.getString("b_num")); //db에 number도 String타입으로 자동 치환된다.
@@ -128,7 +133,7 @@ public class BoardDAO extends DBconnectionPool{
 		}
 	}
 	
-	public int edit_board(BoardDTO dto) {
+	public int edit_board(BoardDTO dto) {//게시물 수정
 		int result=0;
 		String query= "update board set b_title=?,b_contents=? where b_num=? ";
 		try {
@@ -146,7 +151,7 @@ public class BoardDAO extends DBconnectionPool{
 		return result;
 	}//method end
 	
-	public int delete_board(String num) {
+	public int delete_board(String num) {//게시물 삭제
 		int result=0;
 		String query = "delete from board where b_num=?";
 		try {

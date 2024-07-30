@@ -20,4 +20,5 @@
     <fullyQualifiedTypeName name="model1.member.MemberDTO"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="model1.board.BoardDTO"/>
+    <fullyQualifiedTypeName name="utils.JSFunction"/>
 </qualifiedTypeNameHistroy>

@@ -20,15 +20,12 @@ dao.close();
 <script>
 function deletePost(){//삭제 동작
 	const confirmed = confirm("정말로 삭제 하시겠습니까?"); //예,아니오가 있는 alert창
-	if(confirmed){//예 = true 아니오 = false
+ 	if(confirmed){//예 = true 아니오 = false
 		const form = document.Write_Form;//html의 form이름을 가져와 form이라는 객체를 만든다
 		form.method = "post";
 		form.action = "Delete_Process.jsp";
 		form.submit();
 	}
-
-	
-	
 }
 </script>
 <form name= "Write_Form" id= "Write_Form" >
