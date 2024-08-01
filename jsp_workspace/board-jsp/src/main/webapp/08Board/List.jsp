@@ -37,25 +37,29 @@
         int end = page_num*posts;
         map.put("start",start);
         map.put("end",end);
-        
+        int pageTemp = (((page_num - 1) / pages) * pages) + 1;
         list_BoardDTO=boardDAO.show_list(map);
         //map 의 저장된 값 =  search_field, search_word, start, end
         boardDAO.close();
     %>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>보드게시판</title>
 <jsp:include page="../Common/Link.jsp" />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
 </head>
 <body>
 <h2 align="center">보드게시판 - 목록보기</h2>
 <form method="get" id="search" action="" >
-<table border="1" width="90%">
+<table class="table">
 <tr align="right">
 	<td>
-	<button type="button" onclick="location.href='Write.jsp';">글쓰기 </button>
+	<button type="button" class="btn btn-primary" onclick="location.href='Write.jsp';">글쓰기 </button>
 	</td>
 </tr>
 <tr>
@@ -101,14 +105,12 @@ if(list_BoardDTO.isEmpty()){
 		<option value="b_contents">내용</option>
 		</select>&nbsp;&nbsp;
 		<input type="text" name="search_word" />&nbsp;
-		<input type="submit" value="검색" />
+		<button type="submit" class="btn btn-primary" >검색</button>
 		</td>
 	</tr>
-	<tr align="center">
 	<td>
 		<%=PagingDAO.paging_String(total_count, posts, pages, page_num,request.getRequestURI())%>
 	</td>
-	</tr>
 </table>
 
 </form>

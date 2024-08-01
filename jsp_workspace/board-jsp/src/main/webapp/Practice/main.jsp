@@ -7,6 +7,10 @@
 <title>메인 : 메인메뉴</title>
 </head>
 <body>
+<script>
+document.
+</script>
+
 <h2>환영합니다</h2>
 
 <div id="main_menu">

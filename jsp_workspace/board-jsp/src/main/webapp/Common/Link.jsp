@@ -1,27 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- 페이지 위에있는 메뉴 바 -->
-<!-- include용 파일은 기본 태그가 필요 없다 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-<table border= "1" width= "90%" > <!-- 두께 1 , 가로크기 90% -->
-  <tr>
-    <td align="center" >
-    	
-    	<!-- 게시판 링크 추가 -->
-    	<button type= "button" onclick= "location.href='../08Board/List.jsp'">회원게시판</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    	<button type= "button" onclick= "location.href='../09File/List.jsp'">파일게시판</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    	<button type= "button" onclick= "location.href='../10Mvc/List.jsp'">서블릿게시판</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    	<button type= "button" onclick= "location.href='../11Item/List.jsp'">상품게시판</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    	<%
-    	if(session.getAttribute("id")==null){ //session에 id가 없으면(로그인 안한 상태면) 로그인 표시 %>
-    		<button type= "button" onclick= "location.href='../06Session/login_form.jsp'">로그인</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    	<% }else{//로그인상태면 로그아웃 표시 %>
-    		<button type= "button" onclick= "location.href='../06Session/logout.jsp'">로그아웃</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    		<button type= "button" onclick= "location.href='../06Session/member.jsp'">회원정보</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    	<% }
-    	%>
-    </td>
-    <!-- 로그인상태를 보고 로그인 | 로그아웃 표시 -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../08Board/List.jsp">Home</a>
+     <% if(session.getAttribute("id")==null){ %>
+          <a class="nav-link active" aria-current="page" href="../06Session/login_form.jsp">로그인</a>
+          <% }else{//로그인상태면 로그아웃 표시 %>
+    		 <a class="nav-link active" aria-current="page" href="../06Session/logout.jsp">로그아웃</a>
+    		 <a class="nav-link active" aria-current="page" href="../06Session/member.jsp">회원정보</a>
+    	<%} %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     
-  </tr>
-</table>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../12File/file_list.jsp">회원게시판</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../10Mvc/List.jsp">자료게시판</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
